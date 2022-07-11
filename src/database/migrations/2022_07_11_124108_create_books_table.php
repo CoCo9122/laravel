@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMSeibetsusTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateMSeibetsusTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_seibetsu', function (Blueprint $table) {
-            $table->bigIncrements('seibetsu_id');
-            $table->string('name', 10);
-            $table->timestamp('created_at')->useCurrent()->nullable();
+        Schema::create('books', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->integer('price');
+            $table->string('author', 50)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateMSeibetsusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_seibetsus');
+        Schema::dropIfExists('books');
     }
 }
